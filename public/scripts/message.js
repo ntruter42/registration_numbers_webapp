@@ -2,7 +2,7 @@
 // Hide error message after 5 seconds
 // Transition duration must be 1 second
 
-const time = 3000;
+const time = 4000;
 
 window.addEventListener('load', () => {
 	setTimeout(() => {

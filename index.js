@@ -1,6 +1,8 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import bodyParser from "body-parser";
+import session from "express-session";
+import flash from "express-flash";
 
 import database_config from './config/db_setup.js';
 import registration_routes from './routes/registration_routes.js';
@@ -20,6 +22,14 @@ app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(session({
+	secret: "secret42",
+	resave: false,
+	saveUninitialized: true,
+	cookie: { maxAge: 60000 }
+}));
+app.use(flash());
 
 // INSTANCES
 const db = database_config();

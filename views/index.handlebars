@@ -1,13 +1,15 @@
 <div class="flex col container centered">
 
-	<form class="flex col wrapper" action="/add" method="post">
+	<form class="flex col centered wrapper" action="/add" method="post">
 		<label class="centered" for="reg-input">Registration Number</label>
-		<div class="centered error message">Hello, this is a test message for an error!</div>
+		{{#if message.text}}
+		<div class="centered {{message.type}} message">{{message.text}}</div>
+		{{/if}}
 		<input class="centered reg-plate" type="text" name="reg-input" id="reg-input" maxlength="10">
 		<button type="submit">ADD</button>
 	</form>
 
-	<form class="wrapper" action="" method="post">
+	<form class="centered wrapper" action="" method="post">
 		<label for="town-filter">Filter</label>
 		<select class="centered" name="town-filter" id="">
 			<option value="AA" selected>All</option>

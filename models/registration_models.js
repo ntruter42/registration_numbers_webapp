@@ -41,14 +41,13 @@ export default function () {
 		}
 
 		isValid() {
-			// TODO: add validation regex here
-			const valid_regex = '';
+			const valid_regex = /^C[A-Z]{1,2}( |)(\d{3,6}|(\d{1,5}(-| )\d{2,5}|\d{2,5}(-| )\d{1,5}))$/;
 			return valid_regex.test(this.reg_num);
 		}
 
 		townCode() {
-			// TODO: update regex for custom plates
-			return this.reg_num.match(/C[A-Z]+/)[0];
+			const town_code_regex = /^C[A-Z]{1,2}/;
+			return this.reg_num.match(town_code_regex)[0];
 		}
 
 		fromTown() {
