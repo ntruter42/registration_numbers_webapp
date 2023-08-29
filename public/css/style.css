@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+	font-family: 'Reg_Num';
+	src: url('../assets/fonts/GlNummernschildMtl-LrZZ.ttf');
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	text-decoration: none;
+	list-style: none;
+}
+
+/********** Main **********/
+
+:root {
+	--primary-bg: #fff;
+	--primary-fg: #000;
+	--secondary-bg: #ddd;
+	--secondary-fg: #222;
+	--primary-accent: #7600ff;
+	--secondary-accent: #ffa0a0;
+
+	--plate-gradient: linear-gradient(#ddd, #bbb);
+	--plate-focused: linear-gradient(#ec0, #fd2);
+	--plate-fg: #00b;
+	--plate-bg-shadow: inset 1px 2px grey, inset -2px -1px white;
+	--plate-fg-shadow: 1px 2px grey, -2px -1px white;
+
+	--error-bg: #fcc;
+	--error-fg: #e00;
+	--warning-bg: #edc;
+	--warning-fg: #f80;
+	--success-bg: #cdc;
+	--success-fg: #080;
+
+	--plate-border: 0.0625em;
+	--message-border: 0.125em;
+
+	font-size: 24px;
+	font-family: 'PT Sans', 'Segoe UI', sans-serif;
+}
+
+html {
+	height: 100vh;
+	width: 100vw;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+}
+
+form {
+	border-radius: 1rem;
+	border: 2px solid black;
+
+	gap: 0.5rem;
+	padding: 0.5rem;
+	margin-inline: auto;
+}
+
+button {
+	border-radius: 0.5rem;
+
+	margin-inline: auto;
+	padding: 0.25rem 0.5rem;
+}
+
+select {
+	border-radius: 0.5rem;
+	border: 2px solid;
+	outline: none;
+
+	padding: 0rem 0.25rem;
+}
+
+.container {
+	width: 100%;
+	height: calc(100%);
+	/* Subtract navigation bar size here */
+
+	gap: 1rem;
+	padding: 1rem;
+}
+
+.wrapper {
+	gap: 0.5rem;
+	padding: 0.5rem;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex.col {
+	flex-direction: column;
+}
+
+.flex.row {
+	flex-direction: row;
+}
+
+.flex.wrap {
+	flex-wrap: wrap;
+}
+
+.centered {
+	text-align: center;
+	margin-inline: auto;
+}
+
+/********** Display Messages **********/
+
+.message {
+	font-size: 0.5rem;
+
+	border-radius: 0.5em;
+	border: var(--message-border) solid black;
+
+	width: fit-content;
+	padding: 0.5em 1em;
+}
+
+.message.error {
+	background: var(--error-bg);
+	color: var(--error-fg);
+	border: var(--message-border) solid var(--error-fg);
+}
+
+.message.warning {
+	background: var(--warning-bg);
+	color: var(--warning-fg);
+	border: var(--message-border) solid var(--warning-fg);
+}
+
+.message.success {
+	background: var(--success-bg);
+	color: var(--success-fg);
+	border: var(--message-border) solid var(--success-fg);
+}
+
+/********** Registration Plates **********/
+
+.reg-plate {
+	font-size: 2rem;
+	font-family: 'Reg_Num', sans-serif;
+	text-align: center;
+
+	background: var(--plate-gradient);
+	border-radius: 0.25em;
+	border: var(--plate-border) solid;
+	outline: none;
+	box-shadow: var(--plate-bg-shadow);
+	text-shadow: var(--plate-fg-shadow);
+
+	width: calc(10ch + 1em);
+}
+
+input.reg-plate:focus {
+	background: var(--plate-focused);
+}
+
+/********** Transitions / Animations **********/
+
+.fade-in {
+	animation: fade-in 1s;
+}
+
+.fade-out {
+	animation: fade-out 1s;
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.hidden {
+	display: none !important;
+}

@@ -1,0 +1,25 @@
+<div class="flex col container centered">
+
+	<form class="flex col wrapper" action="/add" method="post">
+		<label class="centered" for="reg-input">Registration Number</label>
+		<div class="centered error message">Hello, this is a test message for an error!</div>
+		<input class="centered reg-plate" type="text" name="reg-input" id="reg-input" maxlength="10">
+		<button type="submit">ADD</button>
+	</form>
+
+	<form class="wrapper" action="" method="post">
+		<label for="town-filter">Filter</label>
+		<select class="centered" name="town-filter" id="">
+			<option value="AA" selected>All</option>
+			{{#each towns}}
+			<option value="{{town_code}}">{{town_name}}</option>
+			{{/each}}
+		</select>
+	</form>
+
+	<div class="reg-display flex col wrap centered wrapper">
+		<div class="reg-plate">CA 123-456</div>
+		<div class="reg-plate">CA 456789</div>
+		<div class="reg-plate">CA 12 3456</div>
+	</div>
+</div>
