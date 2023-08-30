@@ -5,23 +5,24 @@
 		{{#if message.text}}
 		<div class="centered {{message.type}} message">{{message.text}}</div>
 		{{/if}}
-		<input class="centered reg-plate" type="text" name="reg-input" id="reg-input" maxlength="10">
+		<input class="centered reg-plate" type="text" name="reg-input" id="reg-input" maxlength="10" autocomplete="off">
 		<button type="submit">ADD</button>
 	</form>
 
-	<form class="centered wrapper" action="" method="post">
-		<label for="town-filter">Filter</label>
+	<form class="centered wrapper" action="/filter" method="post">
+		{{!-- <label for="town-filter">Filter</label> --}}
 		<select class="centered" name="town-filter" id="">
-			<option value="AA" selected>All</option>
+			<option value="AA">All</option>
 			{{#each towns}}
 			<option value="{{town_code}}">{{town_name}}</option>
 			{{/each}}
 		</select>
+		<button type="submit">Filter</button>
 	</form>
 
 	<div class="reg-display flex col wrap centered wrapper">
-		<div class="reg-plate">CA 123-456</div>
-		<div class="reg-plate">CA 456789</div>
-		<div class="reg-plate">CA 12 3456</div>
+		{{#each regList}}
+		<div class="reg-plate">{{reg_num}}</div>
+		{{/each}}
 	</div>
 </div>

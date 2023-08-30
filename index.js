@@ -34,12 +34,13 @@ app.use(flash());
 // INSTANCES
 const db = database_config();
 const models = registration_models();
-const services = registration_services(db, process.env.NODE_ENV, models);
+const services = registration_services(db, process.env.NODE_ENV);
 const routes = registration_routes(services, models);
 
 // ROUTES
 app.get('/', routes.home);
 app.post('/add', routes.add);
+app.post('/filter', routes.filter);
 
 // PORT
 const PORT = process.env.PORT || 3000;

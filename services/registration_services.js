@@ -1,4 +1,15 @@
-export default function (db, schema, models) {
+export default function (db, schema) {
+	async function getRegNums(town){
+		const query = `SELECT reg_num FROM ${schema}.registration_numbers`;
+		let clause = '';
+
+		if (town && town != 'AA') {
+			clause = ` WHERE town_code = '${town}'`;
+		}
+
+		return await db.manyOrNone(query + clause);
+	}
+
 	async function getTowns() {
 		const query = `SELECT * FROM ${schema}.towns`;
 		return await db.many(query);
@@ -9,8 +20,15 @@ export default function (db, schema, models) {
 		await db.none(query);
 	}
 
+	async function exists(reg_num) {
+		const query = `SELECT count(1) FROM ${schema}.registration_numbers WHERE reg_num = '${reg_num}'`;
+		return (await db.one(query)).count > 0 ? true : false;
+	}
+
 	return {
+		getRegNums,
 		getTowns,
-		addReg
+		addReg,
+		exists
 	};
 }
