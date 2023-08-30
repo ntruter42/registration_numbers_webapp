@@ -40,6 +40,7 @@ const routes = registration_routes(services, models);
 // ROUTES
 app.get('/', routes.home);
 app.post('/add', routes.add);
+app.post('/clear', routes.clear);
 app.post('/filter', routes.filter);
 
 // PORT

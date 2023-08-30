@@ -11,7 +11,7 @@ export default function (db, schema) {
 	}
 
 	async function getTowns() {
-		const query = `SELECT * FROM ${schema}.towns`;
+		const query = `SELECT * FROM ${schema}.towns ORDER BY town_code`;
 		return await db.many(query);
 	}
 
@@ -25,10 +25,28 @@ export default function (db, schema) {
 		return (await db.one(query)).count > 0 ? true : false;
 	}
 
+	async function clearRegNums() {
+		const query = `TRUNCATE TABLE ${schema}.registration_numbers`;
+		return await db.none(query);
+	}
+
+	async function clearFilter() {
+		const query = `UPDATE ${schema}.towns SET selected = false`;
+		await db.none(query);
+	}
+
+	async function setFilter(town) {
+		const query = `UPDATE ${schema}.towns SET selected = true WHERE town_code = '${town}'`;
+		await db.none(query);
+	}
+
 	return {
 		getRegNums,
 		getTowns,
 		addReg,
-		exists
+		exists,
+		clearRegNums,
+		clearFilter,
+		setFilter
 	};
 }

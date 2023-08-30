@@ -35,7 +35,7 @@
 	--warning-bg: #edc;
 	--warning-fg: #f80;
 	--success-bg: #cdc;
-	--success-fg: #080;
+	--success-fg: #0a0;
 
 	--plate-border: 0.0625em;
 	--message-border: 0.125em;
@@ -50,6 +50,8 @@ html {
 }
 
 body {
+	background: url('/assets/images/2020-tesla-roadster.png');
+	background-size: cover;
 	height: 100%;
 	width: 100%;
 }
@@ -84,6 +86,7 @@ button:active {
 }
 
 .wrapper {
+	background: white;
 	border-radius: 1rem;
 	border: 2px solid black;
 
@@ -115,7 +118,7 @@ button:active {
 /********** Display Messages **********/
 
 .message {
-	font-size: 0.5rem;
+	font-size: 0.75rem;
 
 	border-radius: 0.5em;
 	border: var(--message-border) solid black;

@@ -2,7 +2,7 @@
 // Button must have name set as "reset"
 
 document.querySelector('button[name = "reset"]').addEventListener('click', (event) => {
-	if (!window.confirm("Are you sure you want to reset?")) {
+	if (!window.confirm("Are you sure you want to clear all registration numbers?")) {
 		event.preventDefault();
 	}
 })

@@ -6,7 +6,10 @@
 		<div class="centered {{message.type}} message">{{message.text}}</div>
 		{{/if}}
 		<input class="centered reg-plate" type="text" name="reg-input" id="reg-input" maxlength="10" autocomplete="off">
-		<button type="submit">ADD</button>
+		<div class="flex row">
+			<button type="submit">ADD</button>
+			<button type="submit" name="reset" formaction="/clear">CLEAR</button>
+		</div>
 	</form>
 
 	<form class="centered wrapper" action="/filter" method="post">
@@ -14,7 +17,7 @@
 		<select class="centered" name="town-filter" id="">
 			<option value="AA">All</option>
 			{{#each towns}}
-			<option value="{{town_code}}">{{town_name}}</option>
+			<option value="{{town_code}}" {{#if selected}}selected{{/if}}>{{town_name}}</option>
 			{{/each}}
 		</select>
 		<button type="submit">Filter</button>
@@ -22,7 +25,10 @@
 
 	<div class="reg-display flex col wrap centered wrapper">
 		{{#each regList}}
-		<div class="reg-plate">{{reg_num}}</div>
+		<div class="reg-plate {{town_code}}">{{reg_num}}</div>
 		{{/each}}
+		{{#if empty}}
+		<div>There are no registration numbers to display</div>
+		{{/if}}
 	</div>
 </div>
