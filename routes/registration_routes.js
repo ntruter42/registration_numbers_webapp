@@ -1,7 +1,7 @@
 export default function (reg_db, models) {
 	async function home(req, res) {
 		const filter = req.flash('filter')[0] || req.body['town-filter'];
-		const regList = (await reg_db.getRegNums(filter)).reverse();
+		const regList = (await reg_db.getRegNums()).reverse();
 		const towns = await reg_db.getTowns();
 		const error = req.flash('error')[0];
 		const success = req.flash('success')[0];
@@ -14,11 +14,6 @@ export default function (reg_db, models) {
 		if (regList.length == 0) {
 			empty = true;
 		}
-
-		// await reg_db.clearFilter();
-		// if (filter !== 'AA') {
-		// 	await reg_db.setFilter(filter);
-		// }
 
 		res.render('index', {
 			empty,
@@ -55,7 +50,6 @@ export default function (reg_db, models) {
 
 	async function filter(req, res) {
 		req.flash('filter', req.body['town-filter']);
-
 		res.redirect('/');
 	}
 

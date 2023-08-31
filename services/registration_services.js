@@ -1,9 +1,9 @@
 export default function (db, schema) {
 	async function getRegNums(town){
-		const query = `SELECT reg_num FROM ${schema}.registration_numbers`;
+		const query = `SELECT * FROM ${schema}.registration_numbers`;
 		let clause = '';
 
-		if (town && town != 'AA') {
+		if (town && town !== 'AA') {
 			clause = ` WHERE town_code = '${town}'`;
 		}
 
@@ -30,23 +30,11 @@ export default function (db, schema) {
 		return await db.none(query);
 	}
 
-	async function clearFilter() {
-		const query = `UPDATE ${schema}.towns SET selected = false`;
-		await db.none(query);
-	}
-
-	async function setFilter(town) {
-		const query = `UPDATE ${schema}.towns SET selected = true WHERE town_code = '${town}'`;
-		await db.none(query);
-	}
-
 	return {
 		getRegNums,
 		getTowns,
 		addReg,
 		exists,
-		clearRegNums,
-		clearFilter,
-		setFilter
+		clearRegNums
 	};
-}
+};

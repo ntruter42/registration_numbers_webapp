@@ -1,19 +1,16 @@
 CREATE TABLE test.towns (
 	town_code VARCHAR(3) PRIMARY KEY NOT NULL,
-	town_name VARCHAR(32) NOT NULL,
-	selected BOOLEAN NOT NULL DEFAULT false
+	town_name VARCHAR(32) NOT NULL
 );
 
 CREATE TABLE development.towns (
 	town_code VARCHAR(3) PRIMARY KEY NOT NULL,
-	town_name VARCHAR(32) NOT NULL,
-	selected BOOLEAN NOT NULL DEFAULT false
+	town_name VARCHAR(32) NOT NULL
 );
 
 CREATE TABLE production.towns (
 	town_code VARCHAR(3) PRIMARY KEY NOT NULL,
-	town_name VARCHAR(32) NOT NULL,
-	selected BOOLEAN NOT NULL DEFAULT false
+	town_name VARCHAR(32) NOT NULL
 );
 
 --------------------------------------------------------------------------------

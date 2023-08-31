@@ -12,4 +12,4 @@ window.addEventListener('load', () => {
 	setTimeout(() => {
 		document.querySelector('.message').classList.add('hidden');
 	}, time + 900);
-})
+});
