@@ -32,7 +32,7 @@ app.use(session({
 app.use(flash());
 
 // INSTANCES
-const db = database_config();
+const db = await database_config();
 const models = registration_models();
 const services = registration_services(db, process.env.NODE_ENV);
 const routes = registration_routes(services, models);
@@ -42,6 +42,7 @@ app.get('/', routes.home);
 app.post('/add', routes.add);
 app.post('/clear', routes.clear);
 app.post('/filter', routes.filter);
+app.get('/reg_number/:input', routes.show);
 
 // PORT
 const PORT = process.env.PORT || 3000;

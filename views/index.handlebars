@@ -24,6 +24,6 @@
 		{{#each regList}}
 		<div class="reg-plate centered" title="{{town_code}}">{{reg_num}}</div>
 		{{/each}}
-		<div class="no-plates hidden">There are no registration numbers to display</div>
+		<div class="no-plates{{#if empty}} hidden{{/if}}">There are no registration numbers to display</div>
 	</div>
 </div>

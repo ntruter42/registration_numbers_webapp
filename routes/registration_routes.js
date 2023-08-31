@@ -1,7 +1,15 @@
 export default function (reg_db, models) {
+	async function show(req, res) {
+		const reg_num = new models.Reg_Num(req.params.input);
+
+		res.render('registration', {
+			regNum: reg_num.string()
+		});
+	}
+
 	async function home(req, res) {
 		const filter = req.flash('filter')[0] || req.body['town-filter'];
-		const regList = (await reg_db.getRegNums()).reverse();
+		const regList = await reg_db.getRegNums();
 		const towns = await reg_db.getTowns();
 		const error = req.flash('error')[0];
 		const success = req.flash('success')[0];
@@ -11,12 +19,12 @@ export default function (reg_db, models) {
 		};
 
 		let empty = false;
-		if (regList.length == 0) {
+		if (regList.length === 0) {
 			empty = true;
 		}
 
 		res.render('index', {
-			empty,
+			empty: !empty,
 			regList,
 			towns,
 			message,
@@ -57,6 +65,7 @@ export default function (reg_db, models) {
 		home,
 		add,
 		clear,
-		filter
+		filter,
+		show
 	}
 }

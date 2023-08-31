@@ -115,6 +115,10 @@ button:active {
 	margin-inline: auto;
 }
 
+.middle {
+	margin: auto;
+}
+
 /********** Display Messages **********/
 
 .message {
@@ -124,6 +128,7 @@ button:active {
 	border: var(--message-border) solid black;
 
 	width: fit-content;
+	max-width: 10.5rem;
 	padding: 0.5em 1em;
 }
 
