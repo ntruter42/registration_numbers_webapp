@@ -41,7 +41,7 @@ export default function () {
 		}
 
 		isValid() {
-			const valid_regex = /^C[A-Z]{1,2}( |)(\d{3,6}|(\d{1,5}(-| )\d{2,5}|\d{2,5}(-| )\d{1,5}))$/;
+			const valid_regex = /^C[AFGJKLNORTVWXYZ]( |)(\d{3,6}|(\d{1,5}(-| )\d{2,5}|\d{2,5}(-| )\d{1,5}))$/;
 			return valid_regex.test(this.reg_num);
 		}
 

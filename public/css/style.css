@@ -56,12 +56,14 @@ body {
 	width: 100%;
 }
 
-button, select, input {
+button,
+select,
+input {
 	border-radius: 0.5rem;
 	border: none;
 	outline: none;
 	box-shadow: inset 0 0 1rem -0.5rem;
-	
+
 	padding: 0.25rem 0.5rem;
 	margin-inline: auto;
 }
@@ -150,7 +152,7 @@ button:active {
 	border: var(--message-border) solid var(--success-fg);
 }
 
-/********** Registration Plates **********/
+/********** Registration Numbers **********/
 
 .reg-display {
 	max-height: 60%;
@@ -176,6 +178,10 @@ button:active {
 
 input.reg-plate:focus {
 	background: var(--plate-focused);
+}
+
+.input-container {
+	max-width: 34rem;
 }
 
 /********** Transitions / Animations **********/

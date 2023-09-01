@@ -13,7 +13,7 @@ CREATE TABLE production.towns (
 	town_name VARCHAR(32) NOT NULL
 );
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE test.registration_numbers (
 	reg_num VARCHAR(10) PRIMARY KEY NOT NULL,
@@ -30,25 +30,21 @@ CREATE TABLE production.registration_numbers (
 	town_code VARCHAR(3) NOT NULL REFERENCES production.towns(town_code)
 );
 
---------------------------------------------------------------------------------
+
 
 TRUNCATE TABLE development.registration_numbers;
 TRUNCATE TABLE production.registration_numbers;
 TRUNCATE TABLE test.registration_numbers;
 
---------------------------------------------------------------------------------
-
 TRUNCATE TABLE development.towns;
 TRUNCATE TABLE production.towns;
 TRUNCATE TABLE test.towns;
 
---------------------------------------------------------------------------------
+
 
 DROP TABLE development.registration_numbers;
 DROP TABLE production.registration_numbers;
 DROP TABLE test.registration_numbers;
-
---------------------------------------------------------------------------------
 
 DROP TABLE development.towns;
 DROP TABLE production.towns;

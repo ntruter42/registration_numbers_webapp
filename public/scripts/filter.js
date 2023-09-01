@@ -25,6 +25,7 @@ window.addEventListener('load', () => {
 		}
 	}
 
+	filterByTown();
 	select.addEventListener('change', filterByTown);
 	select.addEventListener('wheel', function (event) {
 		const scrollDiff = Math.sign(event.deltaY);
