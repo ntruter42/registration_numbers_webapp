@@ -31,7 +31,7 @@ export default function (db, schema) {
 
 	async function clearRegNums() {
 		const query = `TRUNCATE TABLE ${schema}.registration_numbers`;
-		// return await db.none(query);
+		// await db.none(query);
 		await db.query(query);
 	}
 
