@@ -10,10 +10,13 @@ export default function (reg_db, models) {
 	async function home(req, res) {
 		const regList = (await reg_db.getRegNums()).reverse();
 		const towns = await reg_db.getTowns();
+		regList.map(reg => {
+			reg.town_name = towns.find(town => town.town_code === reg.town_code).town_name;
+		});
 		const error = req.flash('error')[0];
 		const success = req.flash('success')[0];
 		const message = {
-			text: error ? error : success,
+			text: error || success,
 			type: error ? 'error' : 'success'
 		};
 
@@ -32,6 +35,7 @@ export default function (reg_db, models) {
 
 	async function add(req, res) {
 		const reg_num = new models.Reg_Num(req.body['reg-input']);
+		req.flash('reg_num', req.body['reg-input']);
 
 		if (!req.body['reg-input']) {
 			req.flash('error', "Enter a registration number");
@@ -41,7 +45,7 @@ export default function (reg_db, models) {
 			req.flash('error', "Registration number already exists");
 		} else {
 			await reg_db.addReg(reg_num.string(), reg_num.townCode());
-			req.flash('success', "Registration number added");
+			req.flash('success', "Registration number added: " + req.flash('reg_num'));
 		}
 
 		res.redirect('/');
