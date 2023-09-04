@@ -1,5 +1,6 @@
 window.addEventListener('load', () => {
 	const select = document.querySelector('select[name="town-filter"]');
+	const scroll = document.querySelector('.scroll.icon');
 	const display = document.querySelector('.reg-display');
 	const plates = display.querySelectorAll('.reg-plate');
 	const empty = display.querySelector('.no-plates');
@@ -7,7 +8,15 @@ window.addEventListener('load', () => {
 	// TODO: clear reg-display, add only reg-plates from town-filter
 	// EDIT: start page with all reg-plates hidden
 	// remove hidden class from reg-plates containing town_code title
-	function filterByTown() {
+	function filterByTown(event) {
+		if (event) {
+			const scrollDiff = Math.sign(event.deltaY);
+			const index = select.selectedIndex + scrollDiff;
+			if (index >= 0 && index < select.options.length) {
+				select.selectedIndex = index;
+			}
+		}
+
 		let option = select.options[select.selectedIndex];
 		let count = 0;
 
@@ -28,12 +37,9 @@ window.addEventListener('load', () => {
 	filterByTown();
 	select.addEventListener('change', filterByTown);
 	select.addEventListener('wheel', function (event) {
-		const scrollDiff = Math.sign(event.deltaY);
-		const index = select.selectedIndex + scrollDiff;
-
-		if (index >= 0 && index < select.options.length) {
-			select.selectedIndex = index;
-		}
-		filterByTown();
+		filterByTown(event);
+	});
+	scroll.addEventListener('wheel', function (event) {
+		filterByTown(event);
 	});
 });

@@ -11,7 +11,7 @@
 			<button type="submit">ADD</button>
 		</form>
 
-		<div class="flex col centered wrapper help-container">
+		<div class="flex col middle wrapper help-container">
 			<span class="reg-help">
 				Registration Codes:<b>{{#each towns}} {{town_code}}{{/each}}</b><hr>
 				Examples of Registration Numbers:<br>
@@ -23,10 +23,11 @@
 
 	<form class="centered wrapper" action="/clear" method="post">
 		{{!-- <label for="town-filter">Filter</label> --}}
-		<select class="centered" name="town-filter" id="">
-			<option value="AA">All</option>
+		<img class="scroll icon centered middle" src="/assets/images/scroll.png" title="Scroll Through Options">
+		<select class="centered" name="town-filter" title="Scroll / Click to Change">
+			<option value="AA">Show All</option>
 			{{#each towns}}
-			<option value="{{town_code}}">{{town_name}}</option>
+			<option value="{{town_code}}">{{town_name}} - {{town_code}}</option>
 			{{/each}}
 		</select>
 		<button type="submit" name="reset">CLEAR</button>

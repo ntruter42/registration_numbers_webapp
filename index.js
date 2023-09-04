@@ -36,7 +36,6 @@ const db = database_config();
 const models = registration_models();
 const services = registration_services(db, process.env.NODE_ENV);
 const routes = registration_routes(services, models);
-await db.connect();
 
 // ROUTES
 app.get('/', routes.home);
